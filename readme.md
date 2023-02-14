@@ -61,8 +61,8 @@ Your room document in your `rooms` collection should resemble the following:
 
 ### Users
 
-- [ ] Create user endpoint
-- [ ] Login user endpoint 
+-   [ ] Create user endpoint
+-   [ ] Login user endpoint
 
 ### Rooms
 
