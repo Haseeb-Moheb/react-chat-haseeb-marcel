@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const user = await User.findsOne({ email: email });
+        const user = await User.findOne({ email: email });
 
         if (!user) throw new Error("Email or Password does not match");
 
@@ -47,6 +47,14 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({ id: user._id }, process.env.JWT, {
             expiresIn: 60 * 60 * 24,
         });
+        email
+            ? res.status(200).json({
+                  user,
+                  token,
+              })
+            : res.status(404).json({
+                  message: "Something went wrong",
+              });
     } catch (err) {
         res.status(500).json({
             Error: err.message,
