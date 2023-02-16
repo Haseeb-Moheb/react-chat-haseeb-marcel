@@ -10,7 +10,7 @@ const RoomSchema = new mongoose.Schema({
         required: true,
     },
     addedUsers: {
-        type: String,
+        type: [String],
         required: true,
     },
 });
