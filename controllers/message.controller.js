@@ -58,6 +58,62 @@ router.get("/all", validateSession, async (req, res) => {
     }
 });
 
+router.patch("/:id", validateSession, async (req, res) => {
+    try {
+        //1. Pull value from parameter
+        // const { id } = req.params;
+        const filter = { _id: req.params.id, owner_id: req.user._id };
+
+        //2. Pull data from the body
+        const info = req.body;
+        //3. Use method to locate document off ID and pass in new info.
+        const returnOption = { new: true };
+
+        // const updated = await Movie.findOneAndUpdate({_id: id}, info, returnOption);
+        const updated = await Message.findOneAndUpdate(
+            filter,
+            info,
+            returnOption
+        );
+        //* findOneAndUpdate(query, document, options);
+        // returnOptions allow us to view the updated document right away.
+
+        //4. Respond
+        updated
+            ? res.status(200).json({
+                  updated,
+              })
+            : res.status(404).json({
+                  message: "Can not update this message.",
+              });
+    } catch (err) {
+        error(res, err);
+    }
+});
+
+router.delete("/:id", validateSession, async (req, res) => {
+    try {
+        //1. Capture ID
+        // const { id } = req.params;
+        const filter = { _id: req.params.id, owner_id: req.user._id };
+
+        //2. Use a delete method to locate and removes base off the ID
+        const deleteMessage = await Message.deleteOne(filter);
+
+        //3. Response
+
+        deleteMessage.deletedCount > 0
+            ? res.status(200).json({
+                  message: "Message removed",
+              })
+            : res.status(404).json({
+                  message: "Did not remove message.",
+              });
+    } catch (err) {
+        error(res, err);
+    }
+});
+
 module.exports = router;
 
 // {
