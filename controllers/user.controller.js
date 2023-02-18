@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-router.post("/signup", async (req, res) => { 
+router.post("/signup", async (req, res) => {
     try {
         const user = new User({
             firstName: req.body.first,
@@ -13,14 +13,15 @@ router.post("/signup", async (req, res) => {
         });
         const newUser = await user.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT, {
-            expiresIn: "1 day",
+            expiresIn: "5 day",
         });
 
-        newUser
-            ? res.status(200).json({
+        newUser ? 
+
+                res.status(200).json({
                   user: newUser,
                   message: "Success! User Created",
-                  token,
+                  token
               })
             : res.status(404).json({
                   message: "Incomplete",
