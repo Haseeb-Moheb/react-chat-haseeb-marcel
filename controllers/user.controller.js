@@ -13,7 +13,7 @@ router.post("/signup", async (req, res) => {
         });
         const newUser = await user.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT, {
-            expiresIn: "1 day",
+            expiresIn: "5 days",
         });
 
         newUser
