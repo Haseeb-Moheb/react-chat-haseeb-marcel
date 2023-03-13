@@ -4,6 +4,7 @@ const Room = require("../models/room.model");
 const jwt = require("jsonwebtoken");
 
 router.post("/room", validateSession, async (req, res) => {
+    
     try {
         const { name, description, addedUsers } = req.body;
 

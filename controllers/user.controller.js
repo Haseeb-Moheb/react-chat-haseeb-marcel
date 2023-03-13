@@ -13,7 +13,7 @@ router.post("/signup", async (req, res) => {
         });
         const newUser = await user.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT, {
-            expiresIn: "1 day",
+            expiresIn: "5 day",
         });
 
         newUser ? 
@@ -65,9 +65,3 @@ router.post("/login", async (req, res) => {
 
 module.exports = router;
 
-/* {
-    "firstName": "John",
-    "lastName": "Wick",
-    "email": "jwick@puppyfinder.com",
-    "password": "focusCommitment1979"
-} */

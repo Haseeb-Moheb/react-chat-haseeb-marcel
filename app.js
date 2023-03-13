@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4001;
+const cors = require('cors');
+
 const userController = require("./controllers/user.controller");
 const roomController = require("./controllers/room.controller");
 const messageController = require("./controllers/message.controller");
@@ -17,6 +19,7 @@ const db = mongoose.connection;
 db.once("open", () => console.log(`Connected: ${DBURL}`));
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/user", userController);
 app.use(validateSession);
