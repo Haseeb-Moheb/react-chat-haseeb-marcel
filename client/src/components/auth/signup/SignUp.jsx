@@ -1,10 +1,10 @@
     import React, { useState, useRef } from 'react'
     import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
-    function SignUp() {
+    function SignUp({updateToken}) {
 
         // const [ firstName, setFirstName ] = useState('');
-        const firstNameRef = useRef();
+        const firstNameRef = useRef(); 
         const lastNameRef = useRef();
         const emailRef = useRef();
         const passwordRef = useRef();
@@ -36,7 +36,8 @@
                 const res = await fetch(url, requestOptions);
                 const data = await res.json();
 
-                console.log(data);
+                // console.log(data);
+                updateToken(data.token)
             
             } catch (err) {
                     console.error(err);
@@ -77,7 +78,6 @@
                 </FormGroup>
                 <Button type='submit'
                 color='dark'>Signup</Button>
-
             </Form>
         
         </>
