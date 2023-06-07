@@ -4,6 +4,7 @@
     const { error, success, incomplete } = require("../helpers");
     const validateSession = require("../middleware/validate-session");
 
+    // Create a new message
     router.post("/:chatRoom", async (req, res) => {
         try {
             const { user, room, body } = req.body;
