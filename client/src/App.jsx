@@ -1,24 +1,36 @@
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import Auth from './components/auth/Auth';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [ sessionToken, setSessionToken ] = useState('Sample Token');
+  const [ sessionToken, setSessionToken ] = useState('');
 
-  // console.log("app.jsx: ", sessionToken)
+  // console.log("App.jsx: ", sessionToken)
+
   const updateToken = newToken => {
     localStorage.setItem("token", newToken)
-    sessionToken(newToken);
+    setSessionToken(newToken); 
   }
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      setSessionToken(localStorage.getItem('token'))
+    }
+  }, []);
 
   return (
     <div className="App">
-      
-      <Auth updateToken={updateToken} />
-      
+      <Routes>
+        <Route 
+        path='/'
+        element={<Auth updateToken={updateToken} />}
+        />
+        <Route 
+        path='/room'
+        element={<h2>Rooms</h2>}/>
+        </Routes>
     </div>
-
   );
 }
 

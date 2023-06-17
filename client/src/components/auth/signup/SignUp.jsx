@@ -1,13 +1,16 @@
     import React, { useState, useRef } from 'react'
     import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+    import { useNavigate } from 'react-router-dom';
+    import FullButton from '../../button/FullButton';
 
     function SignUp({updateToken}) {
 
-        // const [ firstName, setFirstName ] = useState('');
+        // const [ firstName, setFirstName ] = useState(''); 
         const firstNameRef = useRef(); 
         const lastNameRef = useRef();
         const emailRef = useRef();
         const passwordRef = useRef();
+        const navigate = useNavigate();
 
 
         async function handleSubmit(e) {
@@ -37,13 +40,17 @@
                 const data = await res.json();
 
                 // console.log(data);
-                updateToken(data.token)
-            
+                if(data.user) {
+                    updateToken(data.token);
+                    navigate('/room')
+
+                } else {
+                    alert("User not added!")
+                }
             } catch (err) {
                     console.error(err);
                 }
             }
-            
     return (
         <>
             <h2>Signup</h2>
@@ -76,8 +83,10 @@
                     type = "password"
                     autoComplete='off'/>
                 </FormGroup>
+                <FullButton>
                 <Button type='submit'
                 color='dark'>Signup</Button>
+                </FullButton>
             </Form>
         
         </>
