@@ -2,7 +2,7 @@
     import SignUp from './signup/SignUp'
     import { Button, Col, Container, Row } from 'reactstrap';
     import Login from './login/Login';
-    import { set } from 'mongoose';
+    // import { set } from 'mongoose';
 
     function Auth(props) { 
 

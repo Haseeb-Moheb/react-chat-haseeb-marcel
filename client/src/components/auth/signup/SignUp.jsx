@@ -26,7 +26,7 @@
             })
             // console.log(bodyObj);
 
-            const url = `http://localhost:4000/user/signup`;
+            const url = `http://localhost:5000/user/signup`;
             const headers = new Headers();
             headers.append("Content-Type", "application/json");
 
