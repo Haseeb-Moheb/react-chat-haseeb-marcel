@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4001;
 const cors = require('cors');
+const bodyParser = require("body-parser");
+
 
 const userController = require("./controllers/user.controller");
 const roomController = require("./controllers/room.controller");
@@ -18,8 +20,10 @@ const db = mongoose.connection;
 
 db.once("open", () => console.log(`Connected: ${DBURL}`));
 
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
+// router.use(bodyParser.json());
 
 app.use("/user", userController);
 app.use(validateSession);

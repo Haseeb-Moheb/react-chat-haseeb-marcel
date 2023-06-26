@@ -17,7 +17,7 @@ import { baseURL } from '../../environment';
             
             // console.log(nameRef.current.value);
 
-            const url = `${baseURL}/room`
+            const URL = `${baseURL}/room`
             // console.log(url);
 
             const bodyObj = JSON.stringify({
@@ -37,13 +37,13 @@ import { baseURL } from '../../environment';
                 method: 'POST'
             }
             try {
-                const res = await fetch(url, requestOptions)
+                const res = await fetch(URL, requestOptions)
                 const data = await res.json();
 
                 // console.log(data);
 
                 formRef.current.reset();
-                props.fetchRooms()
+                props.fetchRoom()
                 
             } catch (err) {
                 console.error(err);

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Table } from 'reactstrap'
+// import { PropTypes } from 'prop-types'
 // import { baseURL } from '../../environment'
 
-function RoomTable() {
+function RoomTable (props) {
   return (
         <>
         <h2>Rooms</h2>
@@ -22,8 +23,8 @@ function RoomTable() {
         </thead>
         <tbody>
             {
-            props.rooms.maps(room => (  
-            <tr key={room._id}>
+            props.room.map(room => (
+            <tr key={room.id}>
             <td>
                 {room.name}
             </td>
@@ -34,10 +35,7 @@ function RoomTable() {
                 {room.addedusers}
             </td>
             </tr>
-            ))}
-        </tbody>
-        </Table>
-        </>    
+            ))}</tbody></Table></>
   )
 }
 

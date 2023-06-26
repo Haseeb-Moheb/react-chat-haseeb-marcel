@@ -1,39 +1,35 @@
-import { Route, Router, Routes } from 'react-router-dom';
-import './App.css';
-import Auth from './components/auth/Auth';
-import { useState, useEffect } from 'react';
-import RoomIndex from './components/room/RoomIndex';
+import { Route, Router, Routes } from 'react-router-dom'
+import './App.css'
+import Auth from './components/auth/Auth'
+import { useState, useEffect } from 'react'
+import RoomIndex from './components/room/RoomIndex'
 
-function App() {
-
-  const [ sessionToken, setSessionToken ] = useState('');
+function App () {
+  const [sessionToken, setSessionToken] = useState('')
 
   // console.log("App.jsx: ", sessionToken)
 
   const updateToken = newToken => {
-    localStorage.setItem("token", newToken)
-    setSessionToken(newToken); 
+    localStorage.setItem('token', newToken)
+    setSessionToken(newToken)
   }
   useEffect(() => {
-    if(localStorage.getItem('token')) {
+    if (localStorage.getItem('token')) {
       setSessionToken(localStorage.getItem('token'))
     }
-  }, []);
+  }, [])
 
   return (
     <div className="App">
       <Routes>
-        <Route 
-        path='/'
+        <Route path='/'
         element={<Auth updateToken={updateToken} />}
         />
-        <Route 
-        path='/room'
-        element={<RoomIndex token={sessionToken} />}
+        <Route path='/room' element={<RoomIndex token={sessionToken} />}
         />
         </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

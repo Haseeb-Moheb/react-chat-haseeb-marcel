@@ -3,50 +3,47 @@ import RoomCreate from './RoomCreate'
 import { Col, Container, Row } from 'reactstrap'
 import RoomTable from './RoomTable'
 import { baseURL } from '../../environment'
+// import { PropTypes } from 'prop-types'
 
-function RoomIndex(props) {
+function RoomIndex (props) {
+  const [rooms, setRooms] = useState([])
+  const fetchRoom = async () => {
+    const URL = `${baseURL}/room`
 
-    const [ rooms, setRooms ] = useState([]);
-
-    const fetchRooms = async () => {
-        const url = `${baseURL}/room`;
-
-        const requestOptions = {
-            headers: new Headers({
-                "Authorization": props.token
-            }),
-            method: "GET"
-        }
-        try {
-            const res = await fetch(url, requestOptions);
-            const data = await res.json();
-            // console.log(data.rooms);
-
-            setRooms(data.rooms);
-            
-        } catch (err) {
-            console.error(err);
-        }
+    const requestOptions = {
+      headers: new Headers({
+        Authorization: props.token
+      }),
+      method: 'GET'
     }
-    useEffect(() => {
-        if(props.token) {
-            fetchRooms();
-        }
-    }, [props.token])
+    try {
+      const res = await fetch(URL, requestOptions)
+      const data = await res.json()
+      // console.log(data.rooms);
+
+      setRooms(data.rooms)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  useEffect(() => {
+    if (props.token) {
+      fetchRoom()
+    }
+  }, [props.token])
 
   return (
         <>
             <Container>
                 <Row>
                     <Col md="4" >
-                          <RoomCreate token={props.token} />
+                          <RoomCreate token={props.token} fetchRoom={fetchRoom} />
                     </Col>
                     <Col md="8" >
-                        <RoomTable rooms={rooms} />
+                        <RoomTable fetchRoom={fetchRoom} token={props.token} room={rooms} />
                     </Col>
                 </Row>
             </Container>
-            
         </>
   )
 }
