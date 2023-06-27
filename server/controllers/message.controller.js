@@ -97,7 +97,6 @@ router.delete('/:id', validateSession, async (req, res) => {
         errorResponse(res, err);
     }
 })
-
     router.get("/all", validateSession, async (req, res) => {
         try {
             const messages = await Message.find();
@@ -115,6 +114,5 @@ router.delete('/:id', validateSession, async (req, res) => {
         });
     }
 });
-
     module.exports = router;
 
