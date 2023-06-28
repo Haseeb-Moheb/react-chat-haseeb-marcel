@@ -12,7 +12,7 @@ function RoomIndex (props) {
 
     const requestOptions = {
       headers: new Headers({
-        Authorization: props.token
+        Authorization: props.token 
       }),
       method: 'GET'
     }
@@ -40,7 +40,7 @@ function RoomIndex (props) {
                           <RoomCreate token={props.token} fetchRoom={fetchRoom} />
                     </Col>
                     <Col md="8" >
-                        <RoomTable fetchRoom={fetchRoom} token={props.token} room={rooms} />
+                        <RoomTable fetchRoom={fetchRoom} token={props.token} rooms={rooms} />
                     </Col>
                 </Row>
             </Container>

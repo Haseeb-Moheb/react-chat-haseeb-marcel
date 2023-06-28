@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const validateSession = require("../middleware/validate-session");
 const Room = require("../models/room.model");
-const jwt = require("jsonwebtoken");
+// const jwt = require('jsonwebtoken');
 
-router.post("/room", validateSession, async (req, res) => {
+router.post("/", validateSession, async (req, res) => {
     
     try {
         const { name, description, addedUsers } = req.body;

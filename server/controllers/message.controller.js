@@ -1,8 +1,8 @@
-    const router = require("express").Router();
-    const Message = require("../models/message.model");
-    const Room = require("../models/room.model");
-    const { error, success, incomplete } = require("../helpers");
-    const validateSession = require("../middleware/validate-session");
+const router = require("express").Router();
+const Message = require("../models/message.model");
+const Room = require("../models/room.model");
+const { error, success, incomplete } = require("../helpers");
+const validateSession = require("../middleware/validate-session");
 
     // Create a new message
     router.post("/:chatRoom", async (req, res) => {

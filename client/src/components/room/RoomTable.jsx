@@ -23,8 +23,8 @@ function RoomTable (props) {
         </thead>
         <tbody>
             {
-            props.room.map(room => (
-            <tr key={room.id}>
+            props.rooms.map(room => (
+            <tr key={room._id}>
             <td>
                 {room.name}
             </td>

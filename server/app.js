@@ -5,11 +5,10 @@ const PORT = process.env.PORT || 4001;
 const cors = require('cors');
 const bodyParser = require("body-parser");
 
-
-const userController = require("../controllers/user.controller");
-const roomController = require("../controllers/room.controller");
-const messageController = require("../controllers/message.controller");
-const validateSession = require("../middleware/validate-session");
+const userController = require("./controllers/user.controller")
+const roomController = require("./controllers/room.controller");
+const messageController = require("./controllers/message.controller");
+const validateSession = require("./middleware/validate-session");
 
 const mongoose = require("mongoose");
 const DBURL = process.env.DBURL;
