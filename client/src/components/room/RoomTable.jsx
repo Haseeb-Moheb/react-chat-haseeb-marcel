@@ -10,9 +10,9 @@ function RoomTable (props) {
             <Table striped>
         <thead>
             <tr>
-            <th>
+                <th>
                 Name
-            </th>
+                </th>
             <th>
                 Description
             </th>
@@ -25,9 +25,9 @@ function RoomTable (props) {
             {
             props.rooms.map(room => (
             <tr key={room._id}>
-            <td>
+            <th scope="row">
                 {room.name}
-            </td>
+            </th>
             <td>
                 {room.description}
             </td>
@@ -35,7 +35,9 @@ function RoomTable (props) {
                 {room.addedusers}
             </td>
             </tr>
-            ))}</tbody></Table></>
+            ))}
+            </tbody></Table>
+            </>
   )
 }
 

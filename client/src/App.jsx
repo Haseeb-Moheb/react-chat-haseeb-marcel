@@ -25,7 +25,8 @@ function App () {
         <Route path='/'
         element={<Auth updateToken={updateToken} />}
         />
-        <Route path='/room' element={<RoomIndex token={sessionToken} />}
+        <Route path='/room'
+        element={<RoomIndex token={sessionToken} />}
         />
         </Routes>
     </div>

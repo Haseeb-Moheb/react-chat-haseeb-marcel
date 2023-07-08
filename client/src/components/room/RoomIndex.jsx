@@ -11,9 +11,7 @@ function RoomIndex (props) {
     const URL = `${baseURL}/room`
 
     const requestOptions = {
-      headers: new Headers({
-        Authorization: props.token 
-      }),
+      headers: new Headers({ Authorization: props.token }),
       method: 'GET'
     }
     try {
