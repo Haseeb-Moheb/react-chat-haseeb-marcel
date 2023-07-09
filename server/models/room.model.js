@@ -9,7 +9,7 @@ const RoomSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    addedUsers: {
+    user: {
         type: [String],
         required: true,
     },

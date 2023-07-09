@@ -6,12 +6,12 @@ const Room = require("../models/room.model");
 router.post("/", validateSession, async (req, res) => {
     
     try {
-        const { name, description, addedUsers } = req.body;
+        const { name, description, user } = req.body;
 
         const room = new Room({
             name,
             description,
-            addedUsers,
+            user,
         });
 
         const newRoom = await room.save();
@@ -29,7 +29,7 @@ router.post("/", validateSession, async (req, res) => {
         });
     }
 });
-router.get("/all", validateSession, async (req, res) => {
+router.get("/", validateSession, async (req, res) => {
     try {
         const rooms = await Room.find();
 

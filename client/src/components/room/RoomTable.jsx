@@ -11,7 +11,7 @@ function RoomTable (props) {
         <thead>
             <tr>
                 <th>
-                Name
+                Room #
                 </th>
             <th>
                 Description
@@ -32,7 +32,7 @@ function RoomTable (props) {
                 {room.description}
             </td>
             <td>
-                {room.addedusers}
+                {room.user}
             </td>
             </tr>
             ))}
