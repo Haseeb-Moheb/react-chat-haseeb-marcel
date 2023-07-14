@@ -1,9 +1,13 @@
 import React from 'react'
-import { Table } from 'reactstrap'
+import { Button, Table } from 'reactstrap'
 // import { PropTypes } from 'prop-types'
-// import { baseURL } from '../../environment'
+import { baseURL } from '../../environment'
 
 function RoomTable (props) {
+  async function deleteRoom (id) {
+    // console.log(id)
+    const URL = `${baseURL}/room/${id}`
+  }
   return (
         <>
         <h2>Rooms</h2>
@@ -19,6 +23,9 @@ function RoomTable (props) {
             <th>
                 Added Users
             </th>
+            <th>
+                Edit / Delete
+            </th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +40,11 @@ function RoomTable (props) {
             </td>
             <td>
                 {room.user}
+            </td>
+            <td>
+                <Button
+                    onClick={() => deleteRoom(room._id)}
+                    color="danger">Delete</Button>
             </td>
             </tr>
             ))}

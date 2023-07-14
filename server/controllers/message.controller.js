@@ -53,7 +53,7 @@ router.patch('/:id',validateSession, async (req, res) => {
         //3. Use method to locate document off ID and pass in new info.
         const returnOption = {new: true};
 
-        // const updated = await Movie.findOneAndUpdate({_id: id}, info, returnOption);
+        // const updated = await Room.findOneAndUpdate({_id: id}, info, returnOption);
         const updated = await Room.findOneAndUpdate(filter, info, returnOption);
         //* findOneAndUpdate(query, document, options);
         // returnOptions allow us to view the updated document right away.
@@ -61,10 +61,10 @@ router.patch('/:id',validateSession, async (req, res) => {
         //4. Respond
         updated ?
             res.status(200).json({
-                updated
+                updated  
             }) :
-            res.status(404).json({
-                message: "Can not update this movie."
+            res.status(404).json({ 
+                message: "Can not update this message."
             })
 
         } catch (err) {
@@ -81,16 +81,16 @@ router.delete('/:id', validateSession, async (req, res) => {
         const filter = {_id: req.params.id, owner_id:req.user._id};
 
         //2. Use a delete method to locate and removes base off the ID
-        const deleteRoom = await Room.deleteOne(filter);
-        console.log(deleteRoom);
+        const deleteMessage = await Message.deleteOne(filter);
+        console.log(deleteMessage);
 
         //3. Response
-        deleteRoom.deletedCount > 0 ?
+        deleteMessage.deletedCount > 0 ?
             res.status(200).json({
-                message: 'Room Removed'
+                message: 'Message Removed'
             }) :
             res.status(404).json({
-                message: 'Did not remove room.'
+                message: 'Did not remove Message.'
             }) 
 
     } catch (err) {
