@@ -7,6 +7,32 @@ function RoomTable (props) {
   async function deleteRoom (id) {
     // console.log(id)
     const URL = `${baseURL}/room/${id}`
+
+    // const headers = new Headers()
+    // headers.append('Authorization', props.token)
+
+    let requestOptions = {
+        // headers: headers,
+        headers: new Headers({
+            Authorization: props.token
+        }),
+        method: 'DELETE'
+    }
+    try {
+        let res = await fetch(URL, requestOptions)
+        let data = await res.json()
+        // console.log(data.message)
+
+        if (data.message === "Room Removed") {
+            props.fetchRoom()
+        } else {
+            throw new Error("Room was not removed!")
+        }
+
+    } catch (error) {
+        console.error(error)
+
+    }
   }
   return (
         <>
