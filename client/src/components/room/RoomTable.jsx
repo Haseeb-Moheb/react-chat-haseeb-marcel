@@ -1,9 +1,10 @@
 import React from 'react'
 import { Button, Table } from 'reactstrap'
-// import { PropTypes } from 'prop-types'
 import { baseURL } from '../../environment'
+import { useNavigate } from 'react-router-dom'
 
 function RoomTable (props) {
+  const navigate = useNavigate()
   async function deleteRoom (id) {
     // console.log(id)
     const URL = `${baseURL}/room/${id}`
@@ -11,27 +12,25 @@ function RoomTable (props) {
     // const headers = new Headers()
     // headers.append('Authorization', props.token)
 
-    let requestOptions = {
-        // headers: headers,
-        headers: new Headers({
-            Authorization: props.token
-        }),
-        method: 'DELETE'
+    const requestOptions = {
+      // headers: headers,
+      headers: new Headers({
+        Authorization: props.token
+      }),
+      method: 'DELETE'
     }
     try {
-        let res = await fetch(URL, requestOptions)
-        let data = await res.json()
-        // console.log(data.message)
+      const res = await fetch(URL, requestOptions)
+      const data = await res.json()
+      // console.log(data.message)
 
-        if (data.message === "Room Removed") {
-            props.fetchRoom()
-        } else {
-            throw new Error("Room was not removed!")
-        }
-
+      if (data.message === 'Room Removed') {
+        props.fetchRoom()
+      } else {
+        throw new Error('Room was not removed!')
+      }
     } catch (error) {
-        console.error(error)
-
+      console.error(error)
     }
   }
   return (
@@ -68,6 +67,9 @@ function RoomTable (props) {
                 {room.user}
             </td>
             <td>
+                <Button
+                onClick={() => navigate(`/room/${room._id}`)}
+                color='warning'>Edit</Button>
                 <Button
                     onClick={() => deleteRoom(room._id)}
                     color="danger">Delete</Button>

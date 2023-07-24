@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const validateSession = require("../middleware/validate-session");
 const Room = require("../models/room.model");
-// const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken'); 
 
 router.post("/", validateSession, async (req, res) => {
     
@@ -27,6 +27,36 @@ router.post("/", validateSession, async (req, res) => {
         res.status(500).json({
             Error: err.message,
         });
+    }
+});
+//TODO GET One by ID
+/* 
+!   Challenge
+        - By ID
+        - Response should consider
+            - If found
+            - If no document found
+        - Test the route within Postman
+        
+        Hint: Consider login within user.controller.js
+        Docs: https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/
+*/
+router.get('/:id', async (req, res) => {
+    try {
+        // console.log('IN ID ROUTE: ', req.params.id)
+        const { id } = req.params;
+        const room = await Room.findOne({_id: id});
+
+        room ?
+            res.status(200).json({
+                room
+            }) :
+            res.status(404).json({
+                message: "No room found"
+            })
+        
+    } catch (err) {
+        errorResponse(res, err);
     }
 });
 router.get("/", validateSession, async (req, res) => {
@@ -77,37 +107,7 @@ router.patch('/:id',validateSession, async (req, res) => {
           errorResponse(res, err);
     }
 });
-//TODO PATCH One
-router.patch('/:id',validateSession, async (req, res) => {
-try {
-    
-    //1. Pull value from parameter
-    // const { id } = req.params;
-    const filter = {_id: req.params.id, owner_id: req.user._id}
 
-    //2. Pull data from the body
-    const info = req.body;
-    //3. Use method to locate document off ID and pass in new info.
-    const returnOption = {new: true};
-
-    // const updated = await Room.findOneAndUpdate({_id: id}, info, returnOption);
-    const updated = await Room.findOneAndUpdate(filter, info, returnOption);
-    //* findOneAndUpdate(query, document, options);
-    // returnOptions allow us to view the updated document right away.
-
-    //4. Respond
-    updated ?
-        res.status(200).json({
-            updated  
-        }) :
-        res.status(404).json({ 
-            message: "Can not update this room."
-        })
-
-    } catch (err) {
-    errorResponse(res, err);
-}
-})
 //TODO DELETE One
 router.delete('/:id', validateSession, async (req, res) => {
     try {

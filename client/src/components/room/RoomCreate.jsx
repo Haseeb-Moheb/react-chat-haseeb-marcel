@@ -70,10 +70,10 @@ function RoomCreate (props) {
                     <option value={''}></option>
                     <option value={'Continental'}>Continental</option>
                     <option value={'Business'}>Business</option>
-                    <option value={'Food & Drink'}>Food & Drink</option>
+                    <option value={'Finance'}>Finance</option>
                     <option value={'Family'}>Family</option>
                     <option value={'VIPs'}>VIPs</option>
-                    <option value={'Boardroom'}>Boardroom</option>
+                    <option value={'Board'}>Board</option>
                 </Input>
             </FormGroup>
             <FormGroup>

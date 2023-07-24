@@ -3,6 +3,7 @@ import './App.css'
 import Auth from './components/auth/Auth'
 import { useState, useEffect } from 'react'
 import RoomIndex from './components/room/RoomIndex'
+import RoomEdit from './components/room/RoomEdit'
 
 function App () {
   const [sessionToken, setSessionToken] = useState('')
@@ -27,6 +28,9 @@ function App () {
         />
         <Route path='/room'
         element={<RoomIndex token={sessionToken} />}
+        />
+        <Route path='/room/:id'
+        element={<RoomEdit token={sessionToken} />}
         />
         </Routes>
     </div>
