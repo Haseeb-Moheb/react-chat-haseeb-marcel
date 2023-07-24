@@ -58,17 +58,15 @@ function RoomEdit (props) {
       body: bodyObj,
       method: 'PATCH'
     }
-
     try {
       const res = await fetch(url, requestOptions)
       const data = await res.json()
 
-      console.log(data)
+    //   console.log(data)
     } catch (error) {
       console.error(error)
     }
   }
-
   return (
         <>
             <h2 style={{

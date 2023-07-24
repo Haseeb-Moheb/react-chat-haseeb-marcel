@@ -80,5 +80,4 @@ function RoomTable (props) {
             </>
   )
 }
-
 export default RoomTable
