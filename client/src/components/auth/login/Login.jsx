@@ -1,13 +1,13 @@
-import React, {useRef} from 'react'
-import { Form, FormGroup, Input, Button} from 'reactstrap'
+import React, { useRef } from 'react'
+import { Form, FormGroup, Input, Button } from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
-import FullButton from '../../button/FullButton';
+import FullButton from '../../button/FullButton'
 
-function Login({updateToken}) {
+function Login ({updateToken}) {
 
-    const emailRef = useRef();
-    const passwordRef = useRef();
-    const navigate = useNavigate();
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();

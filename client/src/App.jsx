@@ -1,9 +1,11 @@
-import { Route, Router, Routes } from 'react-router-dom'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Auth from './components/auth/Auth'
 import { useState, useEffect } from 'react'
 import RoomIndex from './components/room/RoomIndex'
 import RoomEdit from './components/room/RoomEdit'
+import Logout from './components/auth/logout/Logout'
 
 function App () {
   const [sessionToken, setSessionToken] = useState('')
@@ -22,6 +24,11 @@ function App () {
 
   return (
     <div className="App">
+      {
+        sessionToken !== '' ?
+        <Logout setToken={setSessionToken} /> :
+        null
+      }
       <Routes>
         <Route path='/'
         element={<Auth updateToken={updateToken} />}
