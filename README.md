@@ -1,7 +1,7 @@
 # react-chat-haseeb-marcel
 react-chat-haseeb-marcel created by GitHub Classroom
 
-# React Chat Front and Backend
+# React Chat Frontend and Backend
 
 This is your first pair/group coding project!
 
