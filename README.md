@@ -78,10 +78,10 @@ Your room document in your `rooms` collection should resemble the following:
 
 As this is a group project, it would be much easier to work on it if everyone had access to the same data. For that reason:
 
--   [ ] Setup MongoDB Atlas cluster and utilize it to CRUD your database for this project. You must utilize .dotenv in this project to hide your username, password, and your connection string away from prying eyes of other GitHub users.
+-   [x] Setup MongoDB Atlas cluster and utilize it to CRUD your database for this project. You must utilize .dotenv in this project to hide your username, password, and your connection string away from prying eyes of other GitHub users.
 
--   [ ] Add `update` and `delete` endpoints to your `rooms` controller
--   [ ] Add `update` and `delete` endpoints to your `users` controller
+-   [x] Add `update` and `delete` endpoints to your `rooms` controller
+-   [x] Add `update` and `delete` endpoints to your `users` controller
 
 > HINT
 > Allowing updates on users means that collection associations need to be based on things user **CANNOT** change.
@@ -126,9 +126,9 @@ The view sub-component should consist of an area where users can see all of the 
 
 ## Icebox
 
--   [ ] Server has full CRUD functionality on messages. The basic requirement of this application is to send and retrieve messages. Add a button next to each message which will allow you to select `edit` and `delete` options. This will then send a request to update or delete respective message.
+-   [x] Server has full CRUD functionality on messages. The basic requirement of this application is to send and retrieve messages. Add a button next to each message which will allow you to select `edit` and `delete` options. This will then send a request to update or delete respective message.
 
--   [ ] The user should only be allowed to delete their own messages.
+-   [x] The user should only be allowed to delete their own messages.
 
--   [ ] Add admin functionality check which allows an admin to delete any messages.
+-   [x] Add admin functionality check which allows an admin to delete any messages.
 
